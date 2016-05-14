@@ -14,6 +14,11 @@ namespace Lab3
         abstract protected int x { get; set; }
         abstract protected int y { get; set; }
 
-        abstract public void Draw<T>(Graphics picture, T @object, Pen tool);
+        abstract public void Draw(Graphics picture, Pen tool1, Brush tool2);
+        abstract public void Move(int X, int Y);
+        abstract public double Area(int Radius);
+        abstract public void Scale(float scale);
+        abstract public double Perimeter(int Radius);
+        abstract public override string ToString();
     }
 }

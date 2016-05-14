@@ -17,16 +17,16 @@ namespace Lab3
 
         protected override int y
         {
-            get { return X; }
+            get { return Y; }
             set { Y = value; }
         }
 
-        public int Radius;
+        public float Radius;
 
-        protected int radius
+        protected float radius
         {
             get { return Radius; }
-            private set { Radius = value; }
+            set { Radius = value; }
         }
 
         public Circle(int X, int Y, int R)
@@ -36,15 +36,35 @@ namespace Lab3
             radius = R;
         }
 
-        public void move(int X, int Y)
+        public override void Move(int X, int Y)
         {
             x += X;
             y += Y;
         }
 
-        public override void Draw(Graphics picture, Circle toDraw, Pen tool)
+        public override void Draw(Graphics picture, Pen tool1, Brush tool2)
         {
-            picture.DrawEllipse(tool, toDraw);
+            picture.DrawEllipse(tool1, x, y, (float)radius, (float)radius);
+        }
+
+        public override double Area(int Radius)
+        {
+            return Math.PI * Math.Pow(Radius, 2);
+        }
+
+        public override void Scale(float scale)
+        {
+            radius *= scale;
+        }
+
+        public override double Perimeter(int Radius)
+        {
+            return 2 * Math.PI * Radius;
+        }
+
+        public override string ToString()
+        {
+            return "Circle with radius" + Radius + "\nPosition: X: " + X + " Y: " + Y;
         }
     }
 }

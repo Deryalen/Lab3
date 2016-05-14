@@ -21,16 +21,11 @@ namespace Lab3
         {
             Graphics picture = e.Graphics;
             Circle c1 = new Circle(10, 10, 50);
-            c1.move(10, 10);
-            Draw(picture, c1);
-        }
-
-        void Draw(Graphics g, Circle toDraw)
-        {
-            Pen p1 = new Pen(Color.DarkMagenta);
-            Pen p2 = new Pen(Color.Black);
-
-            g.DrawEllipse(p1, toDraw.X, toDraw.Y, toDraw.X + toDraw.Radius, toDraw.Y + toDraw.Radius);
+            Ring r1 = new Ring(250, 100, 20, 50);
+            c1.Move(0, 100);
+            Brush b1 = new SolidBrush(Color.Silver);
+            Pen p1 = new Pen(Color.DarkViolet);
+            r1.Draw(picture, p1, b1);
         }
     }
 }

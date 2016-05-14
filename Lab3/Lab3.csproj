@@ -59,7 +59,6 @@
     <Compile Include="Ring.cs" />
     <Compile Include="RingColored.cs" />
     <Compile Include="Shape.cs" />
-    <Compile Include="Shape3D.cs" />
     <Compile Include="Sphere.cs" />
     <Compile Include="Torus.cs" />
     <EmbeddedResource Include="Form1.resx">

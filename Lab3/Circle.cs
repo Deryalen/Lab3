@@ -44,10 +44,10 @@ namespace Lab3
 
         public override void Draw(Graphics picture, Pen tool1, Brush tool2)
         {
-            picture.DrawEllipse(tool1, x, y, (float)radius, (float)radius);
+            picture.DrawEllipse(tool1, x, y, radius, radius);
         }
 
-        public override double Area(int Radius)
+        public override double Area()
         {
             return Math.PI * Math.Pow(Radius, 2);
         }
@@ -57,7 +57,7 @@ namespace Lab3
             radius *= scale;
         }
 
-        public override double Perimeter(int Radius)
+        public override double Perimeter()
         {
             return 2 * Math.PI * Radius;
         }

@@ -21,7 +21,7 @@ namespace Lab3
         {
             Graphics picture = e.Graphics;
             Circle c1 = new Circle(10, 10, 50);
-            Ring r1 = new Ring(250, 100, 20, 50);
+            Cylinder r1 = new Cylinder(250, 100, 200, 20);
             c1.Move(0, 100);
             Brush b1 = new SolidBrush(Color.Silver);
             Pen p1 = new Pen(Color.DarkViolet);

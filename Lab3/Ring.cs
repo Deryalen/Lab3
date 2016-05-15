@@ -17,13 +17,33 @@ namespace Lab3
             radius = OR;
         }
 
-        protected int innerRadius { get; set; }
+        protected float innerRadius { get; set; }
 
         public override void Draw(Graphics picture, Pen tool1, Brush tool2)
         {
-            Brush center = new SolidBrush(Color.PowderBlue);
-            picture.FillEllipse(tool2, x, y, radius, radius);
-            picture.FillEllipse(center, x + radius/2 - innerRadius/2, y + radius/2 - innerRadius/2, innerRadius, innerRadius);
+            picture.DrawEllipse(tool1, x, y, radius, radius);
+            picture.DrawEllipse(tool1, x + radius/2 - innerRadius/2, y + radius/2 - innerRadius/2, innerRadius, innerRadius);
+        }
+
+        public new double Area()
+        {
+            return Math.PI * Math.Pow(Radius, 2) - Math.PI * Math.Pow(innerRadius, 2);
+        }
+
+        public new double Perimeter()
+        {
+            return 2 * Math.PI * (radius + innerRadius);
+        }
+
+        public new void Scale(float scale)
+        {
+            radius *= scale;
+            innerRadius *= scale;
+        }
+
+        public override string ToString()
+        {
+            return "Ring with inner radius " + innerRadius + ", outer radius " + radius + "\nPosition: X: " + X + " Y: " + Y;
         }
     }
 }

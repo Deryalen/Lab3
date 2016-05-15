@@ -16,5 +16,10 @@ namespace Lab3
         }
 
         protected int z { get; set; }
+
+        public new void Scale(float scale)
+        {
+            radius *= scale;
+        }
     }
 }

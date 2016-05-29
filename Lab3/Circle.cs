@@ -40,7 +40,7 @@ namespace Lab3
 
         public override string ToString()
         {
-            return "Circle with radius" + Radius + "\nPosition: X: " + X + " Y: " + Y;
+            return "Circle with InnerRadius" + Radius + "\nPosition: X: " + X + " Y: " + Y;
         }
     }
 }

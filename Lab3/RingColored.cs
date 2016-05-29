@@ -11,7 +11,7 @@ namespace Lab3
         {
             picture.DrawEllipse(Pens.Black, X, Y, 2*Radius, 2*Radius);
             picture.FillEllipse(Brushes.Black, X, Y, 2*Radius, 2*Radius);
-            picture.DrawEllipse(Pens.Black, X + (Radius - radius), Y - (Radius - radius), 2*radius, 2*radius);
+            picture.DrawEllipse(Pens.Black, X + (Radius - InnerRadius), Y - (Radius - InnerRadius), 2*InnerRadius, 2*InnerRadius);
         }
     }
 }

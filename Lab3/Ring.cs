@@ -5,27 +5,27 @@ namespace Lab3
 {
     class Ring : Shape
     {
-        public float radius { get; set; }
+        public float InnerRadius { get; set; }
 
         public Ring(float x, float y, float ir, float or) : base(x, y, or)
         {
-            radius = ir;
+            InnerRadius = ir;
         }
 
         public override double Square()
         {
-            return Math.PI*(Math.Pow(Radius, 2) - Math.Pow(radius, 2));
+            return Math.PI*(Math.Pow(Radius, 2) - Math.Pow(InnerRadius, 2));
         }
 
         public override double Perimeter()
         {
-            return 2*Math.PI*(Radius - radius);
+            return 2*Math.PI*(Radius - InnerRadius);
         }
 
         public override void Scale(float scale)
         {
             Radius *= scale;
-            radius *= scale;
+            InnerRadius *= scale;
         }
 
         public void MoveTo(float x, float y)
@@ -42,7 +42,7 @@ namespace Lab3
         public override void Draw(Graphics picture)
         {
             picture.DrawEllipse(Pens.Black, X, Y, 2*Radius, 2*Radius);
-            picture.DrawEllipse(Pens.Black, X + (Radius - radius), Y + (Radius - radius), 2*radius, 2*radius);
+            picture.DrawEllipse(Pens.Black, X + (Radius - InnerRadius), Y + (Radius - InnerRadius), 2*InnerRadius, 2*InnerRadius);
         }
     }
 }

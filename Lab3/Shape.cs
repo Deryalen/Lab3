@@ -1,24 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace Lab3
 {
-    abstract class Shape
+    public abstract class Shape
     {
-        public int X;
-        public int Y;
-        abstract protected int x { get; set; }
-        abstract protected int y { get; set; }
+        public float X { get; set; }
+        public float Y { get; set; }
+        public float Z { get; set; }
+        public float Radius { get; set; }
+        public abstract double Square();
 
-        abstract public void Draw(Graphics picture, Pen tool1, Brush tool2);
-        abstract public void Move(int X, int Y);
-        abstract public double Area();
-        abstract public void Scale(float scale);
-        abstract public double Perimeter();
-        abstract public override string ToString();
+        protected Shape(float x = 0, float y = 0, float r = 0)
+        {
+            X = x;
+            Y = y;
+            Radius = r;
+        }
+
+        protected Shape(float x = 0, float y = 0, float z = 0, float r = 0)
+        {
+            X = x;
+            Y = y;
+            Z = z;
+            Radius = r;
+        }
+
+        public abstract void Draw(Graphics picture);
+        public abstract void Scale(float scale);
+        public abstract double Perimeter();
+        public abstract string ToString();
     }
 }

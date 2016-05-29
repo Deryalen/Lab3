@@ -1,60 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 
 namespace Lab3
 {
     class Circle : Shape
     {
-        protected override int x
+        public Circle(float x, float y, float radius) : base(x, y, radius)
         {
-            get { return X; }
-            set { X = value; }
+            X = x;
+            Y = y;
+            Radius = radius;
         }
 
-        protected override int y
+        public void MoveTo(int x, int y)
         {
-            get { return Y; }
-            set { Y = value; }
+            X = x;
+            Y = y;
         }
 
-        public float Radius;
-
-        protected float radius
+        public override void Draw(Graphics picture)
         {
-            get { return Radius; }
-            set { Radius = value; }
+            picture.DrawEllipse(Pens.Black, X, Y, 2*Radius, 2*Radius);
         }
 
-        public Circle(int X, int Y, int R)
-        {
-            x = X;
-            y = Y;
-            radius = R;
-        }
-
-        public override void Move(int X, int Y)
-        {
-            x += X;
-            y += Y;
-        }
-
-        public override void Draw(Graphics picture, Pen tool1, Brush tool2)
-        {
-            picture.DrawEllipse(tool1, x, y, radius, radius);
-        }
-
-        public override double Area()
+        public override double Square()
         {
             return Math.PI * Math.Pow(Radius, 2);
         }
 
         public override void Scale(float scale)
         {
-            radius *= scale;
+            Radius *= scale;
         }
 
         public override double Perimeter()

@@ -1,41 +1,44 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab3
 {
-    class Cylinder : Ring
+    class Cylinder : Shape
     {
-        public Cylinder(int X, int Y, int Z, int OR) : base(X, Y, Z, OR)
+        public float Height { get; set; }
+
+        public Cylinder(float x, float y, float r, float h) : base(x, y, r)
         {
-            x = X;
-            y = Y;
-            z = Z;
-            radius = OR;
-            innerRadius = 0;
+            Height = h;
         }
 
-        protected float height { get; set; }
-        protected int z { get; set; }
-
-        public new double Area()
+        public override double Perimeter()
         {
-            return Math.PI * Math.Pow(radius, 2) + height * Math.PI * radius * 2;
+            return 2 * Math.PI * Radius * Height;
         }
 
-        public new void Scale(float scale)
+        public override double Square()
         {
-            height *= scale;
-            radius *= scale;
+            return 4 * Math.PI * Math.Pow(Radius, 2) + Math.PI * Radius * Height;
         }
 
-        public override void Draw(Graphics picture, Pen tool1, Brush tool2)
+        public override void Scale(float scale)
         {
-            picture.FillEllipse(tool2, x, y, radius, radius);
-            picture.FillRectangle(tool2, x + 50, y + 50, 2 * (float)Math.PI * (float)radius, height);
+            Height *= scale;
+            Radius *= scale;
+        }
+
+        public override string ToString()
+        {
+            return "Cylinder with properties:\n" + "Radius :" + Radius + "\nCoordinates :" + X + " " + Y + "\nHeight : " + Height;
+        }
+
+        public override void Draw(Graphics picture)
+        {
+            picture.DrawEllipse(Pens.Black, X, Y, 2*Radius, 2*Radius/5);
+            picture.DrawEllipse(Pens.Black, X, Y + Height, 2*Radius, 2*Radius/5);
+            picture.DrawLine(Pens.Black, X, Y + 2*Radius/10, X, Y + Height + 2*Radius/10);
+            picture.DrawLine(Pens.Black, X + 2*Radius, Y+ 2*Radius/10, X +2*Radius, Y + 2*Radius/10 + Height);
         }
     }
 }

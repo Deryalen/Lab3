@@ -1,49 +1,48 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab3
 {
-    class Ring : Circle
+    class Ring : Shape
     {
-        public Ring(int X, int Y, int IR, int OR) : base(X, Y, IR)
+        public float radius { get; set; }
+
+        public Ring(float x, float y, float ir, float or) : base(x, y, or)
         {
-            x = X;
-            y = Y;
-            innerRadius = IR;
-            radius = OR;
+            radius = ir;
         }
 
-        protected float innerRadius { get; set; }
-
-        public override void Draw(Graphics picture, Pen tool1, Brush tool2)
+        public override double Square()
         {
-            picture.DrawEllipse(tool1, x, y, radius, radius);
-            picture.DrawEllipse(tool1, x + radius/2 - innerRadius/2, y + radius/2 - innerRadius/2, innerRadius, innerRadius);
+            return Math.PI*(Math.Pow(Radius, 2) - Math.Pow(radius, 2));
         }
 
-        public new double Area()
+        public override double Perimeter()
         {
-            return Math.PI * Math.Pow(Radius, 2) - Math.PI * Math.Pow(innerRadius, 2);
+            return 2*Math.PI*(Radius - radius);
         }
 
-        public new double Perimeter()
+        public override void Scale(float scale)
         {
-            return 2 * Math.PI * (radius + innerRadius);
-        }
-
-        public new void Scale(float scale)
-        {
+            Radius *= scale;
             radius *= scale;
-            innerRadius *= scale;
+        }
+
+        public void MoveTo(float x, float y)
+        {
+            X = x;
+            Y = y;
         }
 
         public override string ToString()
         {
-            return "Ring with inner radius " + innerRadius + ", outer radius " + radius + "\nPosition: X: " + X + " Y: " + Y;
+            return "Ring with properties:\n" + "Radius :" + Radius + "\nCoordinates :" + X + " " + Y;
+        }
+
+        public override void Draw(Graphics picture)
+        {
+            picture.DrawEllipse(Pens.Black, X, Y, 2*Radius, 2*Radius);
+            picture.DrawEllipse(Pens.Black, X + (Radius - radius), Y + (Radius - radius), 2*radius, 2*radius);
         }
     }
 }
